@@ -46,10 +46,10 @@ def main():
         f.write('h2 -> h3\n' + h2.cmd('ping -c 1 h3') + '\n')
         f.write('Instructions:\n')
         f.write('Run these in another terminal:\n')
-        f.write('  sudo ovs-ofctl show s1\n')
-        f.write('  sudo ovs-ofctl dump-flows s1\n')
-        f.write('  sudo ovs-ofctl add-flow s1 "in_port=2,actions=drop"\n')
-        f.write('  sudo ovs-ofctl add-flow s1 "in_port=1,actions=output:3"\n')
+  #      f.write('  sudo ovs-ofctl show s1\n')
+#        f.write('  sudo ovs-ofctl dump-flows s1\n')
+ #       f.write('  sudo ovs-ofctl add-flow s1 "in_port=2,actions=drop"\n')
+  #      f.write('  sudo ovs-ofctl add-flow s1 "in_port=1,actions=output:3"\n')
 
 #sudo ovs-ofctl add-flow s1 "in_port=2,actions=drop"
 #sudo ovs-ofctl add-flow s1 "in_port=1,actions=output:3"
