@@ -1,10 +1,11 @@
 from mininet.net import Mininet 
-from mininet.node import Node, OVSKernelSwitch, Controller, RemoteController 
 from mininet.cli import CLI 
 from mininet.link import TCLink 
 from mininet.topo import Topo 
-from mininet.log import setLogLevel, info 
+from mininet.log import  info 
+from mininet.log import setLogLevel
 import argparse
+
 
 
 # allowing the node to act as a router, and forward packets between its interfaces
@@ -18,6 +19,15 @@ class Router( Node ):
     def terminate( self ):
         self.cmd( 'sysctl net.ipv4.ip_forward=0' )
         super( Router, self ).terminate()
+
+"""
+    topology:
+
+    h1---r1---r2---h3
+          |
+          h2    
+    
+"""
 
 class RTopo(Topo):
     def __init__(self):
@@ -64,7 +74,7 @@ def main():
         f.write('h3 -> h2\n' + h3.cmd('ping -c 1 10.0.3.2') + '\n')
 
     CLI(net) 
-
+    setLogLevel('debug')
     net.stop()
 
 if __name__ == '__main__':
