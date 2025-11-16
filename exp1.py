@@ -74,7 +74,6 @@ def main():
         f.write('h3 -> h1\n' + h3.cmd('ping -c 1 10.0.0.1') + '\n')
         f.write('h3 -> h2\n' + h3.cmd('ping -c 1 10.0.3.2') + '\n')
 
-    setLogLevel('debug')
     CLI(net) 
     net.stop()
 
