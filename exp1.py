@@ -2,6 +2,7 @@ from mininet.net import Mininet
 from mininet.cli import CLI 
 from mininet.link import TCLink 
 from mininet.topo import Topo 
+from mininet.node import Node
 from mininet.log import  info 
 from mininet.log import setLogLevel
 import argparse
@@ -37,7 +38,6 @@ class RTopo(Topo):
         h3 = self.addHost('h3', ip=ip(2,2,24), defaultRoute='via '+ip(2,1))  
         r1 = self.addHost('r1', cls=Router)
         r2 = self.addHost('r2', cls=Router)
-
         self.addLink(h1, r1, intfName1='h1-eth0', intfName2='r1-eth0')   
         self.addLink(r1, r2, intfName1='r1-eth1', intfName2='r2-eth0')   
         self.addLink(r2, h3, intfName1='r2-eth1', intfName2='h3-eth0')   
@@ -48,13 +48,14 @@ def staticRouting(r1, r2):
     r2.cmd('ip route add 10.0.0.0/24 via 10.0.1.1 dev r2-eth0')
     r2.cmd('ip route add 10.0.3.0/24 via 10.0.1.1 dev r2-eth0')
 
-def ip(subnet,host,prefix=None):
 
+def ip(subnet,host,prefix=None):
     addr = '10.0.'+str(subnet)+'.' + str(host)
     if prefix != None: addr = addr + '/' + str(prefix)
     return addr
 
 def main():
+    setLogLevel('info')
     topo = RTopo()
     net = Mininet(topo=topo, link=TCLink, autoSetMacs = True)
     net.start()
@@ -73,8 +74,8 @@ def main():
         f.write('h3 -> h1\n' + h3.cmd('ping -c 1 10.0.0.1') + '\n')
         f.write('h3 -> h2\n' + h3.cmd('ping -c 1 10.0.3.2') + '\n')
 
-    CLI(net) 
     setLogLevel('debug')
+    CLI(net) 
     net.stop()
 
 if __name__ == '__main__':

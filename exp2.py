@@ -36,9 +36,9 @@ def main():
                 autoSetMacs = True
                 )
     net.start()
-    h1 = net.get('h1').cmd('/usr/sbin/sshd')
-    h2 = net.get('h2').cmd('/usr/sbin/sshd')
-    h3 = net.get('h3').cmd('/usr/sbin/sshd')
+    h1 = net.get('h1')
+    h2 = net.get('h2')
+    h3 = net.get('h3')
 
     with open('result2.txt', 'w') as f:
         f.write('=== Initial ===\n')
@@ -50,6 +50,9 @@ def main():
         f.write('  sudo ovs-ofctl dump-flows s1\n')
         f.write('  sudo ovs-ofctl add-flow s1 "in_port=2,actions=drop"\n')
         f.write('  sudo ovs-ofctl add-flow s1 "in_port=1,actions=output:3"\n')
+
+#sudo ovs-ofctl add-flow s1 "in_port=2,actions=drop"
+#sudo ovs-ofctl add-flow s1 "in_port=1,actions=output:3"
 
     info('Now open another terminal and issue ovs-ofctl commands on s1.\n')
     info('After adding flows, come back and run the verification below.\n')
