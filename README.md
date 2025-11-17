@@ -18,7 +18,7 @@ This project is built with the **Mininet API**. It simulate network topologies, 
     exp2.py : Demonstrates a linear topology with two switches and OpenFlow rules.
 
 
-# How to run: #
+### How to run: ###
 
 Excute the command by
 
@@ -34,8 +34,8 @@ Adding flows rule to the exp2.py:
 
     sudo ovs-ofctl add-flow s1 "in_port=1,actions=output:3" (Send all incoming flow on s1-eth1 to s1-eth3)
 
-# Excution Output: #
-### **Pingall** for each exp1 and exp2: ###
+### Excution Output: ###
+#### **Pingall** for each exp1 and exp2: ####
 exp1.py:
 
 <img src="./assets/pingall1.jpg" alt="exp1" width="400" height="80%">
