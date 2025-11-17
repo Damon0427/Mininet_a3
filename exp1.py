@@ -36,12 +36,25 @@ class RTopo(Topo):
         h1 = self.addHost('h1', ip=ip(0,1,24), defaultRoute='via '+ip(0,3))  
         h2 = self.addHost('h2', ip=ip(3,2,24), defaultRoute='via '+ip(3,4))  
         h3 = self.addHost('h3', ip=ip(2,2,24), defaultRoute='via '+ip(2,1))  
-        r1 = self.addHost('r1', cls=Router)
-        r2 = self.addHost('r2', cls=Router)
-        self.addLink(h1, r1, intfName1='h1-eth0', intfName2='r1-eth0')   
-        self.addLink(r1, r2, intfName1='r1-eth1', intfName2='r2-eth0')   
-        self.addLink(r2, h3, intfName1='r2-eth1', intfName2='h3-eth0')   
-        self.addLink(r1, h2, intfName1='r1-eth2', intfName2='h2-eth0')  
+        r1 = self.addHost('r1', cls=Router, ip=None)
+        r2 = self.addHost('r2', cls=Router, ip=None)
+
+        self.addLink(h1, r1,
+            intfName1='h1-eth0', intfName2='r1-eth0',
+            params2={'ip': ip(0,3,24)})
+
+        self.addLink(r1, r2,
+            intfName1='r1-eth1', intfName2='r2-eth0',
+            params1={'ip': ip(1,1,24)}, params2={'ip': ip(1,2,24)})
+
+        self.addLink(r2, h3,
+            intfName1='r2-eth1', intfName2='h3-eth0',
+            params1={'ip': ip(2,1,24)})
+
+        self.addLink(r1, h2,
+            intfName1='r1-eth2', intfName2='h2-eth0',
+            params1={'ip': ip(3,4,24)})
+
 
 def staticRouting(r1, r2):
     r1.cmd('ip route add 10.0.2.0/24 via 10.0.1.2 dev r1-eth1')
