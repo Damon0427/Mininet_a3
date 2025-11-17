@@ -2,7 +2,7 @@
 
 ### Introduction ###
 
-    This project is built with the **Mininet API**. It simulate network topologies, helping users better understand how hosts, switches, and routers interact in a computer network.
+This project is built with the **Mininet API**. It simulate network topologies, helping users better understand how hosts, switches, and routers interact in a computer network.
 
 ### System Requirements: ###
     - Operating System: Ubuntu 22.04 LTS. 
