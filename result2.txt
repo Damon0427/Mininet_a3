@@ -1,3 +1,4 @@
+From h1 to h3:
 mininet> h1 ping -c 1 h3
 PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
 64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=5.09 ms
@@ -5,18 +6,13 @@ PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
 --- 10.0.0.3 ping statistics ---
 1 packets transmitted, 1 received, 0% packet loss, time 0ms
 rtt min/avg/max/mdev = 5.088/5.088/5.088/0.000 ms
-mininet> h1 ping -c 1 h2
-PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
-From 10.0.0.1 icmp_seq=1 Destination Host Unreachable
 
---- 10.0.0.2 ping statistics ---
-1 packets transmitted, 0 received, +1 errors, 100% packet loss, time 0ms
+From h2 to h3
+mininet> h2 ping -c 1 h3
+PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+From 10.0.0.2 icmp_seq=1 Destination Host Unreachable
 
-mininet> h3 ping -c 1 h2
-PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
-From 10.0.0.3 icmp_seq=1 Destination Host Unreachable
-
---- 10.0.0.2 ping statistics ---
+--- 10.0.0.3 ping statistics ---
 1 packets transmitted, 0 received, +1 errors, 100% packet loss, time 0ms
 
 mininet> 
