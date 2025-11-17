@@ -36,26 +36,13 @@ def main():
                 autoSetMacs = True
                 )
     net.start()
-    h1 = net.get('h1')
-    h2 = net.get('h2')
-    h3 = net.get('h3')
+    info('Network created.\n')
+    
+    #sudo ovs-ofctl add-flow s1 "in_port=2,actions=drop"
+    #sudo ovs-ofctl add-flow s1 "in_port=1,actions=output:3"
 
-    with open('result2.txt', 'w') as f:
-        f.write('=== Initial ===\n')
-        f.write('h1 -> h3\n' + h1.cmd('ping -c 1 h3') + '\n')
-        f.write('h2 -> h3\n' + h2.cmd('ping -c 1 h3') + '\n')
-        f.write('Instructions:\n')
-        f.write('Run these in another terminal:\n')
-  #      f.write('  sudo ovs-ofctl show s1\n')
-#        f.write('  sudo ovs-ofctl dump-flows s1\n')
- #       f.write('  sudo ovs-ofctl add-flow s1 "in_port=2,actions=drop"\n')
-  #      f.write('  sudo ovs-ofctl add-flow s1 "in_port=1,actions=output:3"\n')
-
-#sudo ovs-ofctl add-flow s1 "in_port=2,actions=drop"
-#sudo ovs-ofctl add-flow s1 "in_port=1,actions=output:3"
-
-    info('Now open another terminal and issue ovs-ofctl commands on s1.\n')
-    info('After adding flows, come back and run the verification below.\n')
+    info('Open another terminal and issue ovs-ofctl commands on s1.\n')
+    info('After adding flows, start using ping commands to test\n')
 
     CLI(net)
     net.stop()

@@ -1,3 +1,9 @@
+commands for ovs-ofctl:
+I am using these two add-flow commands:
+sudo ovs-ofctl add-flow s1 "in_port=2,actions=drop" (Drop all incoming flow on s1-eth2)
+sudo ovs-ofctl add-flow s1 "in_port=1,actions=output:3"(Send all incoming flow on s1-eth1 to s1-eth3)
+
+
 From h1 to h3:
 mininet> h1 ping -c 1 h3
 PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
@@ -18,5 +24,3 @@ From 10.0.0.2 icmp_seq=1 Destination Host Unreachable
 mininet> 
 
 
-Instructions:
-Run these in another terminal:
