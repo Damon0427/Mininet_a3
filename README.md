@@ -41,7 +41,7 @@ exp1.py:
 <img src="./assets/pingall1.jpg" alt="exp1" width="400" height="80%">
 
 exp2.py:
-
+（For h1, the ping to h3 succeeds, but one of the intermediate nodes is unreachable, so Mininet displays an ‘X’.）
 <img src="./assets/pingall2.jpg" alt="exp2" width="400" height="100%">
 
 ### Result for exp1: ###

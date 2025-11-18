@@ -46,9 +46,8 @@ def main():
     #sudo ovs-ofctl add-flow s1 "in_port=2,actions=drop"
     #sudo ovs-ofctl add-flow s1 "in_port=1,actions=output:3"
 
-    info('Open another terminal and issue ovs-ofctl commands on s1.\n')
-    info('After adding flows, start using ping commands to test\n')
-
+    info('Open another terminal and add ovs-ofctl add-flows commands on s1.\n')
+    info(' After set up the flows, start testing with connectivity.\n')
     CLI(net)
     net.stop()
 

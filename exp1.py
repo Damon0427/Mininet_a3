@@ -75,10 +75,10 @@ def main():
     setLogLevel('info')
     # Create the network topology
     topo = RTopo()
-    net = Mininet(topo=topo, link=TCLink, autoSetMacs = True)
+    net = Mininet(topo=topo, link=TCLink, autoSetMacs = True, controller = None )
     net.start()
     r1, r2 = net.get('r1'), net.get('r2')
-
+    
     # Configure router interfaces with IP addresses
     r1.cmd('ifconfig r1-eth0 ' + ip(0,3,24))
     r1.cmd('ifconfig r1-eth1 ' + ip(1,1,24))
